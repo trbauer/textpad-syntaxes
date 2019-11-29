@@ -1,0 +1,496 @@
+; For PTX assembly
+
+C=1
+
+[Syntax]
+Namespace1 = 6
+IgnoreCase = No
+KeyWordLength =
+BracketChars = {[()]}
+OperatorChars = -+*/<>!~%^&|=
+PreprocStart = #
+SyntaxStart =
+SyntaxEnd =
+HexPrefix = 0x
+CommentStart = /*
+CommentEnd = */
+CommentStartAlt =
+CommentEndAlt =
+SingleComment = //
+SingleCommentCol =
+SingleCommentAlt = ;
+SingleCommentColAlt =
+SingleCommentEsc =
+StringsSpanLines = Yes
+StringStart = "
+StringEnd = "
+StringAlt =
+StringEsc = \
+CharStart = '
+CharEnd = '
+CharEsc = \
+
+[Preprocessor keywords]
+#define
+#elif
+#else
+#endif
+#error
+#if
+#ifdef
+#ifndef
+#include
+#pragma
+#undef
+defined
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Some of this comes from:
+;   https://docs.nvidia.com/cuda/parallel-thread-execution/index.html
+; Other parts come from codegen on examples.
+[Keywords 1]
+@kernel
+abs
+activemask
+add
+and
+atom
+bar
+barrier
+bfe
+bfi
+bfind
+brev
+bra
+call
+clz
+cnot
+copysign
+cos
+cvt
+cvta
+div
+dp2a
+dp4a
+ex2
+exit
+fence
+fma
+fns
+free
+isspacep
+ld
+ldu
+lop3
+lg
+mad
+mad24
+malloc
+match
+max
+membar
+min
+mov
+mul
+mul24
+neg
+or
+popc
+prefetch
+prefetchu
+prmt
+rcp
+red
+rem
+ret
+rsqrt
+selp
+setp
+shfl
+shl
+shr
+sin
+slct
+sqrt
+st
+sub
+suld
+sust
+sured
+suq
+testp
+tex
+tld4
+txq
+vote
+printf
+wmma
+xor
+;
+brkpt
+nanosleep
+pmevent
+trap
+;
+; video instructions
+vabsdiff
+vabsdiff2
+vabsdiff4
+vadd
+vadd2
+vadd4
+vsub
+vsub2
+vsub4
+vmad
+vavrg2
+vavrg4
+vmin
+vmin2
+vmin4
+vmax
+vmax2
+vmax4
+vshl
+vshr
+vset
+vset2
+vset4
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[Keywords 2]
+; STUFF THAT FOLLOWS DOTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Types
+b8
+b16
+b32
+b64
+;
+s8
+s16
+s32
+s64
+;
+u16
+u32
+u64
+u8
+;
+f16
+f16x2
+f32
+f64
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Comparison functions
+;   setp.* and set.*
+; https://docs.nvidia.com/cuda/parallel-thread-execution/index.html#comparison-and-selection-instructions-set
+;; signed
+eq
+ge
+gt
+le
+lt
+ne
+;; unsigned
+; lower
+lo
+; lower or same
+ls
+; higher
+hi
+; higher or same
+hs
+;; floating
+num
+nan
+; u means unordered (if either is NaN, then we evaluate *true*, not false)
+equ
+geu
+gtu
+leu
+ltu
+neu
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; test.*
+finite
+infinite
+number
+notanumber
+normal
+subnormal
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; atom.{global,shared}.*
+;   NOTE: some of these overlap the base ops
+;add
+;and
+cas
+dec
+exch
+inc
+;max
+;min
+;or
+;xor
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Rounding modes and saturation
+; i means integer (lack thereof means float)
+; n => nearest even
+rn
+rni
+; z => towards zero
+rz
+rzi
+; m => minus infinity
+rm
+rmi
+; p => positive inifnity
+rp
+rpi
+;
+ftz
+sat
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Division modifiers
+approx
+full
+; or can be one of the rounding modes
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Data Movement Options
+; https://docs.nvidia.com/cuda/parallel-thread-execution/index.html#data-movement-and-conversion-instructions
+;; LOADS
+; cache at (a)ll levels
+ca
+; cache at global (L2 and below)
+cg
+; cache streaming (likely to be accessed once only)
+cs
+; last use (spill restore) invalidates after read
+lu
+; cache (v)olatile: don't cache and fetch again (forces a line reload)
+cv
+;; STORES
+; cache writeback all coherent levels
+wb
+; cache write through
+wt
+; cg
+; cs
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+const
+global
+local
+param
+shared
+;
+relaxed
+release
+acquire
+weak
+volatile
+;
+cta
+gpu
+sys
+;
+v2
+v4
+;
+; non coherent load ld.global{|.ca|.cg|.cs}.nc
+nc
+;
+; e.g. prefetchu.L1 or prefetch.global.{L1,L2}
+L1
+L2
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; shuffle options:
+;   shfl and prmt
+up
+down
+bfly
+idx
+;
+; https://docs.nvidia.com/cuda/parallel-thread-execution/index.html#data-movement-and-conversion-instructions-prmt
+; forward/backward for extract
+f4e
+b4e
+; replicate 8/16
+rc8
+rc16
+; edge clamp left/right
+ecl
+ecr
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; tex and txq
+1d
+2d
+2dms
+3d
+a1d
+a2d
+a2dms
+cube
+acube
+;
+width
+height
+depth
+;
+geom
+level
+grad
+base
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; surface operations
+;   suld.*, sust.*, sured.*
+trap
+clamp
+zero
+; v2
+; v4
+none
+;
+b
+;
+; sured ops
+; add min max and or
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Branch Ops:
+;   bra.uni (uniform branch)
+;   bra.idx
+;   ret.uni
+;   ret
+idx
+uni
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; vote.*
+all
+any
+; uni
+ballot
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; WMMA
+;
+m16n16k16
+m8n32k16
+m32n8k16
+m8n8k32
+m8n8k128
+col
+row
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Video Op Options
+;
+b0
+b1
+b2
+b3
+h0
+h1
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Special Registers
+;
+tid
+ntid
+laneid
+warpid
+nwarpid
+ctaid
+smid
+nsmid
+gridid
+lanemask_eq
+lanemask_le
+lanemask_lt
+lanemask_ge
+lanemask_gt
+clock
+clock_hi
+clock64
+pm0
+pm1
+pm2
+pm3
+pm4
+pm5
+pm6
+pm7
+pm0_64
+pm1_64
+pm2_64
+pm3_64
+pm4_64
+pm5_64
+pm6_64
+pm7_64
+envreg0
+envreg1
+envreg2
+envreg3
+envreg4
+envreg5
+envreg6
+envreg7
+envreg8
+envreg9
+envreg10
+envreg11
+envreg12
+envreg13
+envreg14
+envreg15
+envreg16
+envreg17
+envreg18
+envreg19
+envreg20
+envreg21
+envreg22
+envreg23
+envreg24
+envreg25
+envreg26
+envreg27
+envreg28
+envreg29
+envreg30
+envreg31
+total_smem_size
+dynamic_smem_size
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; OTHER STUFF
+address_size
+align
+aligned
+c
+cc
+d
+entry
+extern
+func
+gl
+level
+;ld
+load
+param
+pragma
+pred
+red
+reg
+sync
+target
+to
+version
+visible
+warp
+wide

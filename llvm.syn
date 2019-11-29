@@ -1,0 +1,303 @@
+; TextPad syntax definitions for C and C++
+; Copyright (C) 1998-2002, Helios Software Solutions
+
+C=1
+
+[Syntax]
+Namespace1 = 6
+IgnoreCase = No
+KeyWordLength =
+BracketChars = {[()]}
+OperatorChars = -+*/<>!~%^&|=
+PreprocStart = #
+SyntaxStart =
+SyntaxEnd =
+HexPrefix = 0x
+CommentStart =
+CommentEnd =
+CommentStartAlt =
+CommentEndAlt =
+SingleComment = ;
+SingleCommentCol =
+SingleCommentAlt =
+SingleCommentColAlt =
+SingleCommentEsc =
+StringsSpanLines = Yes
+StringStart = "
+StringEnd = "
+StringAlt =
+StringEsc = \
+CharStart = '
+CharEnd = '
+CharEsc = \
+
+[Preprocessor keywords]
+
+[Keywords 1]
+add
+addrspace
+align
+alloca
+alwaysinline
+and
+ashr
+atomicrmw
+bitcast
+br
+call
+catch
+cmpxchg
+declare
+define
+double 
+extractelement
+extractvalue
+fadd
+false
+fcmp
+fdiv
+fence
+float
+fmul
+fp128
+fptosi
+fptoui
+fptrunc
+frem
+fsub
+getelementptr
+i16
+i32
+i64
+i8
+icmp
+indirectbr
+insertelement
+insertvalue
+inttoptr
+invoke
+label
+landingpad
+linkonce_odr
+load
+lshr
+metadata
+mul
+nounwind
+or
+phi
+ppc_fp128
+ptrtoint
+resume
+ret
+sdiv
+select
+sext
+shl
+shufflevector
+sitofp
+srem
+store
+sub
+switch
+tail
+to
+true
+trunc
+udiv
+uitofp
+unreachable
+urem
+va_arg
+void
+x86_fp80
+xor
+zeroext
+zext
+
+[Keywords 2]
+eq
+ne
+ugt
+uge
+ult
+ule
+sgt
+sge
+slt
+sle
+
+[Keywords 3]
+
+
+[Keywords 4]
+llvm.adjust.trampoline
+llvm.dbg.declare
+llvm.dbg.value
+llvm.frameaddress
+llvm.bswap.f32
+llvm.bswap.f64
+llvm.bswap.f80
+llvm.bswap.f128
+llvm.bswap.ppcf128
+llvm.ceil.f32
+llvm.ceil.f64
+llvm.ceil.f80
+llvm.ceil.f128
+llvm.ceil.ppcf128
+llvm.copysign.f32
+llvm.copysign.f64
+llvm.copysign.f80
+llvm.copysign.f128
+llvm.copysign.ppcf128
+llvm.cos.f32
+llvm.cos.f64
+llvm.cos.f80
+llvm.cos.f128
+llvm.cos.ppcf128
+llvm.ctpop.f32
+llvm.ctpop.f64
+llvm.ctpop.f80
+llvm.ctpop.f128
+llvm.ctpop.ppcf128
+llvm.ctlz.f32
+llvm.ctlz.f64
+llvm.ctlz.f80
+llvm.ctlz.f128
+llvm.ctlz.ppcf128
+llvm.cttz.f32
+llvm.cttz.f64
+llvm.cttz.f80
+llvm.cttz.f128
+llvm.cttz.ppcf128
+llvm.donothing
+llvm.exp.f32
+llvm.exp.f64
+llvm.exp.f80
+llvm.exp.f128
+llvm.exp.ppcf128
+llvm.exp2.f32
+llvm.exp2.f64
+llvm.exp2.f80
+llvm.exp2.f128
+llvm.exp2.ppcf128
+llvm.expect.i32
+llvm.expect.i64
+llvm.fabs.f32
+llvm.fabs.f64
+llvm.fabs.f80
+llvm.fabs.f128
+llvm.fabs.ppcf128
+llvm.fma.f32
+llvm.fma.f64
+llvm.fma.f80
+llvm.fma.f128
+llvm.fma.ppcf128
+llvm.fmuladd.f32
+llvm.fmuladd.f64
+llvm.floor.f32
+llvm.floor.f64
+llvm.floor.f80
+llvm.floor.f128
+llvm.floor.ppcf128
+llvm.gcread
+llvm.gcroot
+llvm.gcwrite
+llvm.init.trampoline
+llvm.invariant.end
+llvm.invariant.start
+llvm.lifetime.end
+llvm.lifetime.start
+llvm.log.f32
+llvm.log.f64
+llvm.log.f80
+llvm.log.f128
+llvm.log.ppcf128
+llvm.log10.f32
+llvm.log10.f64
+llvm.log10.f80
+llvm.log10.f128
+llvm.log10.ppcf128
+llvm.log2.f32
+llvm.log2.f64
+llvm.log2.f80
+llvm.log2.f128
+llvm.log2.ppcf128
+llvm.memcpy
+llvm.memmove
+llvm.memset
+llvm.nearbyint.f32
+llvm.nearbyint.f64
+llvm.nearbyint.f80
+llvm.nearbyint.f128
+llvm.nearbyint.ppcf128
+llvm.objectsize.i32
+llvm.objectsize.i64
+llvm.pcmarker
+llvm.prefetch
+llvm.pow.f32
+llvm.pow.f64
+llvm.pow.f80
+llvm.pow.f128
+llvm.pow.ppcf128
+llvm.powi.f32
+llvm.powi.f64
+llvm.powi.f80
+llvm.powi.f128
+llvm.powi.ppcf128
+llvm.readcyclecounter
+llvm.returnaddress
+llvm.rint.f32
+llvm.rint.f64
+llvm.rint.f80
+llvm.rint.f128
+llvm.rint.ppcf128
+llvm.round.f32
+llvm.round.f64
+llvm.round.f80
+llvm.round.f128
+llvm.round.ppcf128
+llvm.sadd.with.overflow.i16
+llvm.sadd.with.overflow.i32
+llvm.sadd.with.overflow.i64
+llvm.sin.f32
+llvm.sin.f64
+llvm.sin.f80
+llvm.sin.f128
+llvm.sin.ppcf128
+llvm.smul.with.overflow.i16
+llvm.smul.with.overflow.i32
+llvm.smul.with.overflow.i64
+llvm.sqrt.f32
+llvm.sqrt.f64
+llvm.sqrt.f80
+llvm.sqrt.f128
+llvm.sqrt.ppcf128
+llvm.ssub.with.overflow.i16
+llvm.ssub.with.overflow.i32
+llvm.ssub.with.overflow.i64
+llvm.stacksave
+llvm.stackrestore
+llvm.tan.f32
+llvm.tan.f64
+llvm.tan.f80
+llvm.tan.f128
+llvm.tan.ppcf128
+llvm.trunc.f32
+llvm.trunc.f64
+llvm.trunc.f80
+llvm.trunc.f128
+llvm.trunc.ppcf128
+llvm.uadd.with.overflow.i16
+llvm.uadd.with.overflow.i32
+llvm.uadd.with.overflow.i64
+llvm.umul.with.overflow.i16
+llvm.umul.with.overflow.i32
+llvm.umul.with.overflow.i64
+llvm.usub.with.overflow.i16
+llvm.usub.with.overflow.i32
+llvm.usub.with.overflow.i64
+llvm.va_end
+llvm.va_start
+llvm.va_copy
+llvm.var.annotation
