@@ -1,0 +1,209 @@
+; TextPad syntax definitions for Python 1.5.2
+; Copyright (C) 1999, Thierry Lalinne (Thierry_Lalinne@csi.com)
+
+C=1
+
+[Syntax]
+Namespace1 = 6
+IgnoreCase = No
+InitKeyWordChars = A-Za-z_
+KeyWordChars = A-Za-z0-9_
+BracketChars = {[()]}
+OperatorChars = -+*/<>!~%^&|=
+PreprocStart =
+SyntaxStart =
+SyntaxEnd =
+CommentStart = """
+CommentEnd = """
+CommentStartAlt = '''
+CommentEndAlt = '''
+SingleComment = #
+SingleCommentCol =
+SingleCommentAlt =
+SingleCommentColAlt =
+StringStart = "
+StringEnd = "
+StringAlt = '
+StringEsc = \
+CharStart = '
+CharEnd = '
+CharEsc = \
+
+[Keywords 1]
+and
+as
+assert
+async
+await
+break
+class
+continue
+def
+del
+elif
+else
+except
+finally
+for
+from
+global
+if
+import
+in
+is
+lambda
+nonlocal
+not
+or
+pass
+print
+raise
+return
+try
+while
+with
+yield
+
+[Keywords 2]
+self
+__init__
+__del__
+__getattr__
+__setattr__
+__delattr__
+__repr__
+__str__
+__cmp__
+__hash__
+__call__
+__add__
+__radd__
+__mul__
+__rmul__
+__sub__
+__rsub__
+__div__
+__rdiv__
+__mod__
+__rmod__
+__divmod__
+__rdivmod__
+__pow__
+__rpow__
+__and__
+__rand__
+__or__
+__ror__
+__xor__
+__rxor__
+__lshift__
+__rlshift__
+__rshift__
+__rrshift__
+__nonzero__
+__pos__
+__neg__
+__invert__
+__abs__
+__int__
+__long__
+__float__
+__complex__
+__oct__
+__hex__
+__coerce__
+__len__
+__getitem__
+__setitem__
+__delitem__
+__getslice__
+__setslice__
+__delslice__
+__repeat__
+__concat__
+
+[Keywords 3]
+__import__
+abs
+apply
+buffer
+callable
+chr
+cmp
+coerce
+compile
+complex
+delattr
+dir
+divmod
+eval
+exec
+execfile
+filter
+float
+getattr
+globals
+hasattr
+hash
+hex
+id
+input
+int
+intern
+isinstance
+issubclass
+len
+list
+locals
+long
+map
+max
+min
+oct
+open
+ord
+pow
+range
+raw_input
+reduce
+reload
+repr
+round
+setattr
+slice
+str
+tuple
+type
+vars
+xrange
+
+[Keywords 4]
+ArithmeticError
+AssertionError
+AttributeError
+EOFError
+EnvironmentError
+Exception
+False
+FloatingPointError
+IOError
+ImportError
+IndexError
+KeyError
+KeyboardInterrupt
+LookupError
+MemoryError
+NameError
+None
+NotImplementedError
+OSError
+OverflowError
+RuntimeError
+StandardError
+SyntaxError
+SystemError
+SystemExit
+True
+TypeError
+ValueError
+ZeroDivisionError
