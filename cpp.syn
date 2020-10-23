@@ -184,6 +184,12 @@ double1
 double2
 double3
 double4
+;
+__half2
+__half
+__nv_bfloat162
+__nv_bfloat16
+
 [Keywords 3]
 ; CUDA
 dim3
