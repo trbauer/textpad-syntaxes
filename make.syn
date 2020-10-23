@@ -1,0 +1,134 @@
+; TextPad syntax definition for BSD make Makefiles.
+; 20051128
+;
+; Original definition is from the GNU Makefile syntax definition
+; from Trevor Robinson.
+;
+; Modified for BSD syntax by Eric Huss.
+;
+; Note that this was based on the make used in FreeBSD, but is
+; probably relevant to other BSD's as well.
+;
+; When adding a "Makefile" document class, you should call the
+; document class something like "ZMakefile" so that it shows up
+; last in the list of document classes.  This is due to an issue
+; that when you add "Makefile" as a file, it will not match because
+; the "Text" document class defines "*." as one of its file types.
+; The list appears to be processed in alphabetical order with the
+; last match winning (or is that in reverse order with the first
+; match winning?).
+;
+; XXX: There is a bug that special named targets (such as .PHONY)
+; are not highlighted properly because in TextPad the Preprocessor
+; highlighting takes precedence over other keywords.  Hopefully some
+; future version of TextPad will have a more sophisticated syntax
+; definition.
+
+C=1
+
+[Syntax]
+Namespace1 = 6
+IgnoreCase = No
+InitKeyWordChars = A-Za-z_.
+KeyWordChars = A-Za-z0-9_.
+BracketChars = {[()]}
+OperatorChars = -+*/<>!~%^&|=
+PreprocStart = .
+SyntaxStart =
+SyntaxEnd =
+HexPrefix = 0x
+CommentStart =
+CommentEnd =
+CommentStartAlt =
+CommentEndAlt =
+SingleComment = #
+SingleCommentCol =
+SingleCommentAlt =
+SingleCommentColAlt =
+SingleCommentEsc =
+StringsSpanLines = Yes
+StringStart = "
+StringEnd = "
+StringAlt = '
+StringEsc = \
+CharStart = '
+CharEnd = '
+CharEsc = \
+
+[Preprocessor keywords]
+.elif
+.elifdef
+.elifmake
+.elifndef
+.elifnmake
+.else
+.endfor
+.endif
+.error
+.for
+.if
+.ifdef
+.ifmake
+.ifndef
+.ifnmake
+.include
+.undef
+.warning
+defined
+empty
+exists
+make
+target
+
+[Keywords 1]
+; Variables recognized by make.
+.ALLSRC
+.ARCHIVE
+.CURDIR
+.IMPSRC
+.INCLUDES
+.LIBS
+.MAKEFLAGS
+.MEMBER
+.OBJDIR
+.OODATE
+.PREFIX
+.TARGET
+.TARGETS
+MACHINE
+MACHINE_ARCH
+MAKE
+MFLAGS
+PWD
+
+[Keywords 2]
+; Special sources.
+.IGNORE
+.MAKE
+.NOTMAIN
+.OPTIONAL
+.PRECIOUS
+.SILENT
+.USE
+.WAIT
+
+[Keywords 3]
+; Special targets.
+.BEGIN
+.DEFAULT
+.END
+.IGNORE
+.INCLUDES
+.INTERRUPT
+.LIBS
+.MAIN
+.MAKEFLAGS
+.MFLAGS
+.NO_PARALLEL
+.NOTPARALLEL
+.ORDER
+.PATH
+.PHONY
+.PRECIOUS
+.SILENT
+.SUFFIXES
