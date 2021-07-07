@@ -104,6 +104,7 @@ site_name
 source_group
 string
 target_compile_definitions
+target_compile_features
 target_compile_options
 target_include_directories
 target_link_libraries
