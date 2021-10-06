@@ -1,4 +1,4 @@
-; For GCN assembly
+; For SASS assembly
 
 C=1
 
@@ -78,6 +78,7 @@ EXIT
 F2F
 F2FP
 F2I
+F2IP
 FADD
 FCHK
 FFMA
@@ -162,6 +163,8 @@ SULD
 SUST
 TEX
 TLD
+TXQ
+UBMSK
 UFLO
 UIADD3
 UIMAD
