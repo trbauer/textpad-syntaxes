@@ -84,6 +84,7 @@ ldu
 lop3
 lg
 mad
+madc
 mad24
 malloc
 match
@@ -94,6 +95,7 @@ mov
 mul
 mul24
 neg
+not
 or
 popc
 prefetch
