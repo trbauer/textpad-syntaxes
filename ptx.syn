@@ -108,6 +108,7 @@ ret
 rsqrt
 selp
 setp
+shf
 shfl
 shl
 shr
