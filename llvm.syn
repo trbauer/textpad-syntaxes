@@ -46,10 +46,12 @@ bitcast
 br
 call
 catch
+catchpad
+cleanuppad
 cmpxchg
 declare
 define
-double 
+double
 extractelement
 extractvalue
 fadd
@@ -63,6 +65,7 @@ fp128
 fptosi
 fptoui
 fptrunc
+freeze
 frem
 fsub
 getelementptr
@@ -77,6 +80,7 @@ insertvalue
 inttoptr
 invoke
 label
+landingpad
 landingpad
 linkonce_odr
 load
@@ -108,6 +112,7 @@ udiv
 uitofp
 unreachable
 urem
+va_arg
 va_arg
 void
 x86_fp80
