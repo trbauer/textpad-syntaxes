@@ -107,6 +107,7 @@ mov
 mov
 movi
 mul
+mullh
 nop
 not
 or
@@ -127,6 +128,8 @@ sdpas
 sel
 send
 sendc
+sendg
+sendgc
 sends
 sendsc
 shfl
