@@ -18,7 +18,7 @@ CommentStartAlt =
 CommentEndAlt =
 SingleComment = //
 SingleCommentCol =
-SingleCommentAlt = ;
+SingleCommentAlt =
 SingleCommentColAlt =
 SingleCommentEsc =
 StringsSpanLines = Yes
@@ -159,6 +159,10 @@ vshr
 vset
 vset2
 vset4
+;
+applypriority
+mbarrier
+tensormap
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

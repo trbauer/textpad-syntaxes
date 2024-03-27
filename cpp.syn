@@ -119,6 +119,13 @@ volatile
 wchar_t
 while
 wmain
+;
+concept
+requires
+alignas
+alignof
+static_assert
+__attribute__
 
 [Keywords 2]
 __multiple_inheritance
@@ -176,6 +183,26 @@ longlong1
 longlong2
 longlong3
 longlong4
+uchar1
+uchar2
+uchar3
+uchar4
+ushort1
+ushort2
+ushort3
+ushort4
+uint1
+uint2
+uint3
+uint4
+ulong1
+ulong2
+ulong3
+ulong4
+ulonglong1
+ulonglong2
+ulonglong3
+ulonglong4
 float1
 float2
 float3
